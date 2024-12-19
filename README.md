@@ -15,10 +15,12 @@ member entity를 생성 => membercontroller를 통해 @RequestMapping으로 경�
 
 ((Spring Context에서 MemberService 타입의 Bean을 찾음.
 해당 Bean을 MemberController의 생성자에 주입.
-MemberService가 final로 선언되어 있기 때문에 반드시 주입되어야 하며, 주입되지 않으면 컴파일 오류가 발생          ==> 이 내용이 굉장히 흥미로웠다 생성자 주입을 통한 의존성을 주입받는 형식이 좀 신기한 경험이었다.
-→ 이로 인해 필수 의존성을 강제할 수 있습니다.))
+MemberService가 final로 선언되어 있기 때문에 반드시 주입되어야 하며, 주입되지 않으면 컴파일 오류가 발생 → 이로 인해 필수 의존성을 강제할 수 있습니다.))
+// ==> 이 내용이 굉장히 흥미로웠다 생성자 주입을 통한 의존성을 주입받는 형식이 좀 신기한 경험이었다.
 
 
 그 후에 ResponseEntity로 SignUpResponseDto를 받아와 signUp(@RequestBody SignUpRequestDto requestDto로 매핑해준다.
 (requestDto는 @RequestBody를 통해 클라이언트에서 전달받은 JSON 데이터를 담는 매개변수이고 @RequestBody 덕분에 json데이터를 객체로 바꿔준다.)
+
+그 후에 다시 SignUpResponseDto signUpResponseDto로 객체를 받아온다.
 
