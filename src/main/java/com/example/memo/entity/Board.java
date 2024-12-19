@@ -17,15 +17,20 @@ public class Board extends BaseEntity {
     @Column(columnDefinition = "longtext")
     private String contents;
 
+    @Column(columnDefinition = "longtext")
+    private String email;
+
     @ManyToOne
     @JoinColumn(name = "member=id")
     private Member member;
 
     public Board() {}
 
-    public Board(String title, String contents) {
+    public Board(String title, String contents, String email) {
         this.title = title;
         this.contents = contents;
+        this.email = email;
+
     }
 
     public void setMember(Member member) {

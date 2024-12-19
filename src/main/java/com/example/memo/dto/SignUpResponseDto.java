@@ -8,12 +8,12 @@ public class SignUpResponseDto {
 
     private final String username;
 
-    private final Integer age;
+    private final String email;
 
-    public SignUpResponseDto(Long id, String username, Integer age) {
+    public SignUpResponseDto(Long id, String username, String email) {
         this.id = id;
         this.username = username;
-        this.age = age;
+        this.email = email;
     }
 
 }

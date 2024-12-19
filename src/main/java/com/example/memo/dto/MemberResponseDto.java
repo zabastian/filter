@@ -8,11 +8,11 @@ import lombok.Getter;
 
         private final String username;
 
-        private final Integer age;
+        private final String email;
 
-        public MemberResponseDto(String username, Integer age) {
+        public MemberResponseDto(String username, String email) {
             this.username = username;
-            this.age = age;
+            this.email = email;
         }
     }
 

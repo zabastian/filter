@@ -8,11 +8,11 @@ public class SignUpRequestDto {
 
     private final String password;
 
-    private final Integer age;
+    private final String email;
 
-    public SignUpRequestDto(String username, String password, Integer age) {
+    public SignUpRequestDto(String username, String password, String email) {
         this.username = username;
         this.password = password;
-        this.age = age;
+        this.email = email;
     }
 }

@@ -17,16 +17,16 @@ public class Member extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    private Integer age;
+    private String email;
 
     public Member() {
         this.password = password;
     }
 
-    public Member(String username, String password, Integer age) {
+    public Member(String username, String password, String email) {
         this.username = username;
         this.password = password;
-        this.age = age;
+        this.email = email;
     }
 
     public void updatePassword(String newPassword) {

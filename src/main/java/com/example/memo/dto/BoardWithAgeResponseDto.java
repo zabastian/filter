@@ -3,21 +3,14 @@ package com.example.memo.dto;
 import lombok.Getter;
 
 @Getter
-public class CreateBoardRequestDto {
-
+public class BoardWithAgeResponseDto {
     private final String title;
-
     private final String contents;
-
-    private final String username;
-
     private final String email;
 
-    public CreateBoardRequestDto(String title, String contents, String username, String email) {
+    public BoardWithAgeResponseDto(String title, String contents, String email) {
         this.title = title;
         this.contents = contents;
-        this.username = username;
         this.email = email;
     }
-
 }

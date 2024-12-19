@@ -23,7 +23,7 @@ public class MemberController {
                 memberService.signUp( // memberService에 signUp만들라고 경고표시 나옴 그걸 requestDto로 만들어 받아옴
                         requestDto.getUsername(),
                         requestDto.getPassword(),
-                        requestDto.getAge()
+                        requestDto.getEmail()
                 );
         return new ResponseEntity<>(signUpResponseDto, HttpStatus.CREATED);
         // 성공했을때 http상태코드를 넘겨줘야함
