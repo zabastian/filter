@@ -1,8 +1,6 @@
 package com.example.memo.config;
 
-import com.example.memo.filter.CustomFilter;
 import com.example.memo.filter.LoginFilter;
-import jakarta.servlet.Filter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,23 +8,30 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class WebConfig {
 
-    @Bean
-    public FilterRegistrationBean customFilter() {
-        FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
-        filterRegistrationBean.setFilter(new CustomFilter()); // Filter 등록
-        filterRegistrationBean.setOrder(1); // Filter 순서 1 설정
-        filterRegistrationBean.addUrlPatterns("/*"); // 전체 URL에 Filter 적용
+    //    @Bean
+//    FilterRegistrationBean<Filter> addFilter() {
+//        FilterRegistrationBean<Filter> filterFilterRegistrationBean = new FilterRegistrationBean<>();
+//        filterFilterRegistrationBean.setFilter(new CustomFilter());
+//        filterFilterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST, DispatcherType.ERROR);
+//        filterFilterRegistrationBean.addUrlPatterns("/*");
+//        return filterFilterRegistrationBean;
+//    }
+//    @Bean
+//    public FilterRegistrationBean customFilter() {
+//        FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
+//        filterRegistrationBean.setFilter(new CustomFilter()); // Filter 등록
+//        filterRegistrationBean.setOrder(1); // Filter 순서 1 설정
+//        filterRegistrationBean.addUrlPatterns("/*"); // 전체 URL에 Filter 적용
+//
+//        return filterRegistrationBean;
+//    }
 
-        return filterRegistrationBean;
-    }
-
     @Bean
-    public FilterRegistrationBean loginFilter() {
-        FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
+    public FilterRegistrationBean<LoginFilter> loginFilter() {
+        FilterRegistrationBean<LoginFilter> filterRegistrationBean = new FilterRegistrationBean<>();
         filterRegistrationBean.setFilter(new LoginFilter()); // Filter 등록
-        filterRegistrationBean.setOrder(2); // Filter 순서 2 설정
+        filterRegistrationBean.setOrder(1); // Filter 순서 2 설정
         filterRegistrationBean.addUrlPatterns("/*"); // 전체 URL에 Filter 적용
-
         return filterRegistrationBean;
     }
 }

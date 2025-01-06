@@ -9,7 +9,7 @@ import lombok.Getter;
 public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long memberid;
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -19,17 +19,26 @@ public class Member extends BaseEntity {
 
     private String email;
 
-    public Member() {
-        this.password = password;
-    }
+    private String kim;
 
-    public Member(String username, String password, String email) {
+//    public Member() {
+//        this.password = password;
+//    }
+
+    public Member(String username, String password, String email, String kim) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.kim = kim;
+    }
+
+    public Member() {
+
     }
 
     public void updatePassword(String newPassword) {
         this.password = newPassword;
     }
+
+
 }

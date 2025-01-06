@@ -1,7 +1,9 @@
 package com.example.memo.entity;
 
+import com.example.memo.dto.CreateBoardRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Entity
@@ -9,7 +11,7 @@ import lombok.Getter;
 public class Board extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long boardid;
 
     @Column(nullable = false)
     private String title;
@@ -20,21 +22,28 @@ public class Board extends BaseEntity {
     @Column(columnDefinition = "longtext")
     private String email;
 
+    @Setter
     @ManyToOne
-    @JoinColumn(name = "member=id")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     public Board() {}
 
-    public Board(String title, String contents, String email) {
+    public Board(String title, String contents, String email, Member member) {
         this.title = title;
         this.contents = contents;
         this.email = email;
-
-    }
-
-    public void setMember(Member member) {
         this.member = member;
     }
+
+    public static Board of(CreateBoardRequestDto request, Member member) {
+        return new Board(
+                request.getTitle(),
+                request.getContents(),
+                request.getEmail(),
+                member
+        );
+    }
+
 }
 

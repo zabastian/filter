@@ -12,7 +12,7 @@ import java.io.IOException;
 @Slf4j
 public class LoginFilter implements Filter {
     // 인증을 하지 않아도될 URL Path 배열
-    private static final String[] WHITE_LIST = {"/", "/user/signup", "/login", "/logout"};
+    private static final String[] WHITE_LIST = {"/", "/user/signup", "/login", "/logout", "/members/signup"/*, "/boards", "/boards/test"*/};
 
     @Override
     public void doFilter(
@@ -36,10 +36,13 @@ public class LoginFilter implements Filter {
 
             // 로그인 확인 -> 로그인하면 session에 값이 저장되어 있다는 가정.
             // 세션이 존재하면 가져온다. 세션이 없으면 session = null
-            HttpSession session = httpRequest.getSession(false);
+            HttpSession session = httpRequest.getSession(false); // HttpServletRequest안에 session이 존재하고 그 session안에 attribute가 존재함
 
+            if (session == null) {
+                log.info("세션이 null입니다.");
+            }
             // 로그인하지 않은 사용자인 경우
-            if (session == null || session.getAttribute("sessionKey값") == null) {
+            if (session == null || session.getAttribute("memberId") == null) {
                 throw new RuntimeException("로그인 해주세요.");
             }
 
